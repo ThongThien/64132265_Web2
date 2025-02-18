@@ -1,0 +1,31 @@
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/BMI")
+public class BMI extends HttpServlet {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        
+        PrintWriter out = response.getWriter();
+        
+        out.println("<html>");
+        out.println("<head><title>Tính BMI</title></head>");
+        out.println("<body>");
+        out.println("<div class='container'>");
+        out.println("<h1>Tính Chỉ Số BMI</h1>");
+        out.println("<form action='BMI' method='POST'>");
+        out.println("Chiều cao (m): <input type='text' name='height' required><br>");
+        out.println("Cân nặng (kg): <input type='text' name='weight' required><br>");
+        out.println("<button type='submit'>Tính BMI</button>");
+        out.println("</form>");
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
+	}
+}

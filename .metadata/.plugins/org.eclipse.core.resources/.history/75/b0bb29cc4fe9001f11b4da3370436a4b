@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Nhap ten</h2>
+	<form action="doPost" method="POST">
+		Ten: <input type="text" name ="name">
+		<button type="submit">Gui</button>
+	</form>
+</body>
+</html>
