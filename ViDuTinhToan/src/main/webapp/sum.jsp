@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<% 
+	<% 
 	String strA = request.getParameter("a");	
 	int valueA = Integer.parseInt(strA);
 	String strB = request.getParameter("b");	
