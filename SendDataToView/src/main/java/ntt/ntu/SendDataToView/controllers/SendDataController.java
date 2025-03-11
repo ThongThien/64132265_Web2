@@ -108,7 +108,7 @@ public class SendDataController {
         }
 
         model.addAttribute("bmi", String.format("%.2f", bmi));
-        model.addAttribute("category", tt);
+        model.addAttribute("tt", tt);
 
         return "bmiResult";  
     }
