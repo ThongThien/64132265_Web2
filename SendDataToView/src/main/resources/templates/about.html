@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông Tin User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    
+</head>
+<body>
+
+    <h2>Thông Tin User</h2>
+    <p><strong>MSSV:</strong> <span th:text="${mssv}"></span></p>
+    <p><strong>Họ và Tên:</strong> <span th:text="${ten}"></span></p>
+    <p><strong>Giới Tính:</strong> <span th:text="${gioiTinh}"></span></p>
+    <p><strong>Năm Sinh:</strong> <span th:text="${namSinh}"></span></p>
+
+    <a href="/form">Nhập lại</a>
+</body>
+</html>
