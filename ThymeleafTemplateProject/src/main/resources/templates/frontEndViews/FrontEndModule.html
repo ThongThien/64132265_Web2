@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Electronics Store</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <div th:fragment="header" class="header">
+            <h1>Electronics Store</h1>
+        </div>
+        
+        <!-- Menu -->
+        <nav th:fragment="menu" class="menu">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/about}">About</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+                <li><a th:href="@{/products}">Products</a></li>
+                <li><a th:href="@{/services}">Services</a></li>
+            </ul>
+            <form class="d-flex" th:action="@{/search}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" name="query">
+                <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+        </nav>
+        
+        <div class="row mt-4">
+            <!-- Sidebar -->
+            <div th:fragment="sidebar" class="col-md-2 sidebar">
+                <h4>Product Categories</h4>
+                <ul>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">Smartphones</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-md-10">
+                <h2>Welcome to Electronics Store</h2>
+                <p>Discover the latest technology and gadgets.</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div th:fragment="footer" class="footer mt-4">
+            <p>&copy; 2025 Electronics Store. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -32,8 +32,6 @@ public class SendDataController {
     );
     @GetMapping("/objecttoview")  
     public String SendListObjectData(Model model) {
-
-
         model.addAttribute("users", users); 
         return "viewListUser";  
     }
@@ -59,6 +57,7 @@ public class SendDataController {
 
         return "about"; 
     }
+    
     // Login
     @GetMapping("/formLogin")
     public String showFormLogin() {
@@ -81,8 +80,8 @@ public class SendDataController {
             return "loginForm"; 
         }
     }
-    // bmi
     
+    // bmi
     @GetMapping("/bmi-form")
     public String showBmiForm() {
         return "bmiForm";  

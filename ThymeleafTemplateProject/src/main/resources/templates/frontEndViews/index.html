@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <table border="2" width="100%">
+        <tr height="100px">
+            <td colspan="2"> 
+                <div th:replace ="frontEndViews/FrontEndModule::header"></div>  
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"> 
+                <div th:replace ="frontEndViews/FrontEndModule::menu"></div>  
+            </td>  
+        </tr>
+        <tr height="450px">            
+        	<td> 
+                <div th:replace ="frontEndViews/FrontEndModule::sidebar"></div>  
+            </td>
+            <td width="800px"> Home Page Content </td> 
+
+        </tr>
+        <tr>
+            <td colspan="2"> 
+                <div th:replace ="frontEndViews/FrontEndModule::footer"></div>  
+            </td>  
+        </tr>
+    </table>
+</body>
+</html>
