@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <!-- Header -->
         <div th:fragment="header" class="header">
-            <h1>Electronics Store</h1>
+            <h1>ANH BACKGROUND</h1>
         </div>
         
         <!-- Menu -->
@@ -18,23 +18,23 @@
 		    <ul>
 		        <li><a th:href="@{/}">Home</a></li>
 		        <li><a th:href="@{/about}">About</a></li>
-		        <li><a th:href="@{/list}">Students</a></li>
+		        <li><a th:href="@{/list}">List Students</a></li>
 		        <li><a th:href="@{/addNew}">Add Student</a></li>  
 		    </ul>
 		</nav>
        
 		<div class="row mt-4">
-		    <!-- Main Content (Cố định col-8) -->
-		    <div class="col-md-8">
-		        <h2>Welcome to ntu</h2>
+		    <!-- Main Content (5/8 màn hình - col-md-5) -->
+		    <div class="col-md-5">
+		        <h2>Welcome to NTU</h2>
 		    </div>		
-		        
-			<!-- Sidebar (Cố định col-2) -->
-			<div th:fragment="sidebar" class="col-md-2 sidebar">
-			    <img src="https://your-image-link.com/image.jpg" alt="Sidebar Image" class="img-fluid">
-			</div>
+		
+		    <!-- Sidebar (3/8 màn hình - col-md-4) -->
+		    <div th:fragment="sidebar" class="col-md-4 sidebar">
+		        <img src="link_anh_cua_ban.jpg" alt="Sidebar Image">
+		    </div>
 		</div>
-       
+   
         <!-- Footer -->
         <div th:fragment="footer" class="footer mt-4">
             <p>@NGUYENTHONGTHIEN-K64</p>
