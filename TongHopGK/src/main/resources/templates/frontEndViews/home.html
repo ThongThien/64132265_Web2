@@ -15,15 +15,14 @@
         <div th:replace="frontEndViews/FrontEndModule::menu"></div>
 
         <div class="row mt-4">
-            <!-- Sidebar (col-3) -->
-            <div class="col-md-3">
-                <div th:replace="frontEndViews/FrontEndModule::sidebar"></div>
-            </div>
-
             <!-- Main Content (col-9) -->
             <div class="col-md-9">
                 <h2>Home Page Content</h2>
                 <p>Welcome to the home page! Here you can find information about our students and courses.</p>
+            </div>            
+            <!-- Sidebar (col-3) -->            
+            <div class="col-md-3">
+                <div th:replace="frontEndViews/FrontEndModule::sidebar"></div>
             </div>
         </div>
 
