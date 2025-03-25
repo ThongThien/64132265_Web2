@@ -28,23 +28,31 @@
             </form>
         </nav>
         
-        <div class="row mt-4">
-            <!-- Sidebar -->
-            <div th:fragment="sidebar" class="col-md-2 sidebar">
-                <h4>Product Categories</h4>
-                <ul>
-                    <li><a href="#">Laptops</a></li>
-                    <li><a href="#">Smartphones</a></li>
-                    <li><a href="#">Accessories</a></li>
-                </ul>
-            </div>
-            
-            <!-- Main Content -->
-            <div class="col-md-10">
-                <h2>Welcome to Electronics Store</h2>
-                <p>Discover the latest technology and gadgets.</p>
-            </div>
-        </div>
+		<div class="row mt-4">
+		    <!-- Sidebar (Cố định col-2) -->
+		    <div th:fragment="sidebar" class="col-md-2 sidebar">
+		        <h4>Product Categories</h4>
+		        <ul>
+		            <li><a href="#">Laptops</a></li>
+		            <li><a href="#">Smartphones</a></li>
+		            <li><a href="#">Accessories</a></li>
+		        </ul>
+		    </div>
+		
+		    <!-- Main Content (Cố định col-8) -->
+		    <div class="col-md-8">
+		        <h2>Welcome to Electronics Store</h2>
+		        <p>Your one-stop shop for the latest gadgets and electronics.</p>
+		        
+		        <!-- Thêm phần hình ảnh -->
+		        <div class="image-gallery">
+		            <img src="/images/laptop.jpg" alt="Laptop">
+		            <img src="/images/smartphone.jpg" alt="Smartphone">
+		            <img src="/images/accessory.jpg" alt="Accessories">
+		        </div>
+		    </div>
+		</div>
+
         
         <!-- Footer -->
         <div th:fragment="footer" class="footer mt-4">

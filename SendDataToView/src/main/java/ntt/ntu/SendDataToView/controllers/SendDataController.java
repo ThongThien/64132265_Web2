@@ -30,6 +30,7 @@ public class SendDataController {
             new User("64132269", "Lê Minh Hoàng", "Nam", "07/07/2000"),
             new User("64132270", "Đỗ Quốc Thắng", "Nữ", "10/10/1999")
     );
+    
     @GetMapping("/objecttoview")  
     public String SendListObjectData(Model model) {
         model.addAttribute("users", users); 
