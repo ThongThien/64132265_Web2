@@ -16,6 +16,13 @@ html, body {
     width: 100%;
     height: 100%;
 }
+.header {
+    width: 100%;
+    height: 30px; /* Đặt chiều cao cố định */
+    background-image: url('/image/images.jpg'); /* Đường dẫn ảnh */
+    background-size: cover; /* Ảnh phủ đầy header */
+    background-position: center; /* Căn giữa ảnh */
+}
 
 .row {
     display: flex; /* Căn chỉnh ngang */
