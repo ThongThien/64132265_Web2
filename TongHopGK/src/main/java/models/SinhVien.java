@@ -11,7 +11,11 @@ public class SinhVien {
         this.diemTb = diemTb;
     }
 
-    public String getMssv() {
+	public SinhVien() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getMssv() {
         return mssv;
     }
 

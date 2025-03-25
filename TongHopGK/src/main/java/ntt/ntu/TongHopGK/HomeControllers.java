@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import models.SinhVien;
 
@@ -37,7 +39,14 @@ public class HomeControllers {
     }
 
     @GetMapping("/add-new")
-    public String sanPham() {
+    public String hienThiForm(Model model) {
+        model.addAttribute("sinhVien", new SinhVien()); 
         return "frontEndViews/addNew";
+    }
+
+    @PostMapping("/add-new")
+    public String themSinhVien(@ModelAttribute SinhVien sinhVien) {
+        danhSachSinhVien.add(sinhVien);
+        return "redirect:/list"; 
     }
 }
