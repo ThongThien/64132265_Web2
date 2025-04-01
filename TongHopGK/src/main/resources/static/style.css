@@ -16,13 +16,6 @@ html, body {
     width: 100%;
     height: 100%;
 }
-.header {
-    width: 100%;
-    height: 30px; /* Đặt chiều cao cố định */
-    background-image: url('/image/images.jpg'); /* Đường dẫn ảnh */
-    background-size: cover; /* Ảnh phủ đầy header */
-    background-position: center; /* Căn giữa ảnh */
-}
 
 .row {
     display: flex; /* Căn chỉnh ngang */
@@ -81,6 +74,61 @@ html, body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item img {
+	height: 300px;
+	object-fit: cover;
+	background-size: cover;
+}
+
+		.student-profile {
+			display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            max-width: 500px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+
+        .student-profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-right: 20px;
+        }
+
+        .student-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .student-info h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .student-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .student-info strong {
+            color: #ffdd57;
+        }
+
+ul {
+	margin-bottom: 0px !important;
+}
+
+.table > thead > tr > th{
+	color: white;
+	background-color: #4a4aff;
 }
 
 /* Footer */
