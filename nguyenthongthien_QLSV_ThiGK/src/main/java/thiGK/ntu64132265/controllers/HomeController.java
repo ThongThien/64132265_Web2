@@ -12,7 +12,7 @@ import thiGK.ntu64132265.models.Student;
 import thiGK.ntu64132265.models.Topic;
 
 public class HomeController {	
-    private List<Topic> topics = Arrays.asList(
+    	private List<Topic> topics = Arrays.asList(
             new Topic(1, "AI Development", "Exploring AI and ML", 101, "Research"),
             new Topic(2, "Web Security", "Cybersecurity for web apps", 102, "Security"),
             new Topic(3, "Blockchain Tech", "Decentralized finance systems", 103, "Finance")
@@ -28,12 +28,7 @@ public class HomeController {
         public String home(Model model) {
             model.addAttribute("topics", topics);
             model.addAttribute("students", students);
-            return "home";
-        }
-
-        @GetMapping("/dashboard")
-        public String dashboard() {
-            return "frontEndViews/about";
+            return "frontEndViews/home";
         }
 
         @GetMapping("/topic/all")
@@ -59,5 +54,24 @@ public class HomeController {
             topics.removeIf(t -> t.getId() == id);
             model.addAttribute("topics", topics);
             return "redirect:/topic/all";
+        }
+        
+        @GetMapping("/student/all")
+        public String listStudents(Model model) {
+            model.addAttribute("students", students);
+            return "student-list";
+        }
+
+        @GetMapping("/student/view/{id}")
+        public String viewStudent(@PathVariable int id, Model model) {
+            Optional<Student> student = students.stream().filter(s -> s.getId() == id).findFirst();
+            student.ifPresent(value -> model.addAttribute("student", value));
+            return "student-view";
+        }
+
+        @GetMapping("/student/delete/{id}")
+        public String deleteStudent(@PathVariable int id, Model model) {
+            students.removeIf(s -> s.getId() == id);
+            return "redirect:/student/all";
         }
 }
