@@ -15,7 +15,13 @@ public class Topic {
         this.topicType = topicType;
     }
     
-    public int getId() { return id; }
+    public Topic() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public int getId() { return id; }
     public String getTopicName() { return topicName; }
     public String getTopicDescription() { return topicDescription; }
     public int getSupervisorID() { return supervisorID; }

@@ -6,39 +6,43 @@
     <title>Topic List</title>
 </head>
 <body>
-    <div th:replace="fragments/FrontEndModule :: sidebar"></div>
+    <div th:replace="frontEndViews/FrontEndModule :: sidebar"></div>
 
     <div class="col-md-9 d-flex flex-column">
-        <div th:replace="fragments/FrontEndModule :: header"></div>
+        <div th:replace="frontEndViews/FrontEndModule :: header"></div>
 
         <div class="content p-3">
             <h2>Topic List</h2>
-            <table class="table table-bordered">
+            <a th:href="@{/topic/new}">Add New Topic</a>
+            <table border="1">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Topic Name</th>
                         <th>Description</th>
+                        <th>Supervisor ID</th>
+                        <th>Topic Type</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Duyệt qua các topic và hiển thị trong bảng -->
                     <tr th:each="topic : ${topics}">
                         <td th:text="${topic.id}"></td>
-                        <td th:text="${topic.name}"></td>
-                        <td th:text="${topic.description}"></td>
+                        <td th:text="${topic.topicName}"></td>
+                        <td th:text="${topic.topicDescription}"></td>
+                        <td th:text="${topic.supervisorID}"></td>
+                        <td th:text="${topic.topicType}"></td>
                         <td>
                             <a th:href="@{/topic/view/{id}(id=${topic.id})}">View</a> |
                             <a th:href="@{/topic/edit/{id}(id=${topic.id})}">Edit</a> |
-                            <a th:href="@{/topic/delete/{id}(id=${topic.id})}">Delete</a>
+                            <a th:href="@{/topic/delete/{id}(id=${topic.id})}" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div th:replace="fragments/FrontEndModule :: footer"></div>
+        <div th:replace="frontEndViews/FrontEndModule :: footer"></div>
     </div>
 </body>
 </html>

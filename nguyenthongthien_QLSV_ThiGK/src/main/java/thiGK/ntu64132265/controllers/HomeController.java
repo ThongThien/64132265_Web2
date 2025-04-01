@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,58 +31,69 @@ public class HomeController {
         
         @GetMapping("/")
         public String dashboard(Model model) {
-            return "dashboard";  
+            return "frontEndViews/dashboard";  
         }
 
-        
         @GetMapping("/topic/all")
         public String listTopics(Model model) {
             model.addAttribute("topics", topics);
-            return "topic-list";
+            return "frontEndViews/topic-list";
         }
 
         @GetMapping("/topic/new")
-        public String newTopic() {
-            return "topic-form";
+        public String newTopic(Model model) {
+            model.addAttribute("topic", new Topic());
+            return "frontEndViews/topic-Addnew";
         }
-        
-        @PostMapping("/save")
-        public String saveTopic(@RequestParam String name, @RequestParam String description) {
-            Topic newTopic = new Topic(topics.size() + 1, name, description, 0, description); // Tạo mới topic
-            topics.add(newTopic);  // Thêm vào danh sách
-            return "redirect:/topic/all";  // Sau khi lưu xong, quay lại trang danh sách topic
+
+        @PostMapping("/topic/save")
+        public String saveTopic(
+            @RequestParam String topicName,
+            @RequestParam String topicDescription,
+            @RequestParam int supervisorID,
+            @RequestParam String topicType
+        ) {
+            Topic newTopic = new Topic(topics.size() + 1, topicName, topicDescription, supervisorID, topicType);
+            topics.add(newTopic);
+            return "redirect:/topic/all";
         }
 
         @GetMapping("/topic/view/{id}")
         public String viewTopic(@PathVariable int id, Model model) {
             Optional<Topic> topic = topics.stream().filter(t -> t.getId() == id).findFirst();
             topic.ifPresent(value -> model.addAttribute("topic", value));
-            return "topic-view";
+            return "frontEndViews/topic-View";
         }
 
         @GetMapping("/topic/delete/{id}")
-        public String deleteTopic(@PathVariable int id, Model model) {
+        public String deleteTopic(@PathVariable int id) {
             topics.removeIf(t -> t.getId() == id);
-            model.addAttribute("topics", topics);
             return "redirect:/topic/all";
         }
         
         @GetMapping("/student/all")
         public String listStudents(Model model) {
             model.addAttribute("students", students);
-            return "student-list";
+            return "frontEndViews/student-List";
         }
         
         @GetMapping("/student/new")
         public String newStudent() {
-            return "student-form";
+            return "frontEndViews/student-Addnew";
         }
-
+        
+        @PostMapping("/student/add")
+        public String addStudent(@ModelAttribute Student student) {
+            student.setId(students.size() + 1); 
+            students.add(student);
+            return "redirect:/student/all";
+        }
+        
         @GetMapping("/student/view/{id}")
         public String viewStudent(@PathVariable int id, Model model) {
             Optional<Student> student = students.stream().filter(s -> s.getId() == id).findFirst();
             student.ifPresent(value -> model.addAttribute("student", value));
-            return "student-view";
+            return "frontEndViews/student-View";
         }
 
         @GetMapping("/student/delete/{id}")

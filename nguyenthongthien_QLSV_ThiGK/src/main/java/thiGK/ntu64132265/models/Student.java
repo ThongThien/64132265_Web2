@@ -15,4 +15,10 @@ public class Student {
 	public int getId() { return id; }
     public String getName() { return name; }
     public int getGroupID() { return groupID; }
+
+
+	public void setId(int i) {
+		// TODO Auto-generated method stub
+		
+	}
 }
