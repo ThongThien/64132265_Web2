@@ -30,7 +30,7 @@ public class HomeController {
             ));
         
         @GetMapping("/")
-        public String dashboard(Model model) {
+        public String dashboard() {
             return "frontEndViews/dashboard";  
         }
 

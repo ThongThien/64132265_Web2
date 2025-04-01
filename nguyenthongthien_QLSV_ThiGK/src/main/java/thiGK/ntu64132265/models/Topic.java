@@ -19,8 +19,6 @@ public class Topic {
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	public int getId() { return id; }
     public String getTopicName() { return topicName; }
     public String getTopicDescription() { return topicDescription; }
