@@ -1,5 +1,6 @@
 package thiGK.ntu64132265.controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -7,6 +8,8 @@ import java.util.Optional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import thiGK.ntu64132265.models.Student;
 import thiGK.ntu64132265.models.Topic;
@@ -19,18 +22,18 @@ public class HomeController {
             new Topic(3, "Blockchain Tech", "Decentralized finance systems", 103, "Finance")
         );
 
-        private List<Student> students = Arrays.asList(
-            new Student(1, "Alice", 1),
-            new Student(2, "Bob", 1),
-            new Student(3, "Charlie", 2)
-        );
+        private List<Student> students = new ArrayList<>(Arrays.asList(
+                new Student(1, "Nguyễn Thông Thiên", 1),
+                new Student(2, "Lê Thanh Sơn", 2),
+                new Student(3, "Trần Minh Tâm", 3)
+            ));
         
         @GetMapping("/")
         public String dashboard(Model model) {
-            return "frontEndViews/dashboard";  
+            return "dashboard";  
         }
-        
 
+        
         @GetMapping("/topic/all")
         public String listTopics(Model model) {
             model.addAttribute("topics", topics);
@@ -40,6 +43,13 @@ public class HomeController {
         @GetMapping("/topic/new")
         public String newTopic() {
             return "topic-form";
+        }
+        
+        @PostMapping("/save")
+        public String saveTopic(@RequestParam String name, @RequestParam String description) {
+            Topic newTopic = new Topic(topics.size() + 1, name, description, 0, description); // Tạo mới topic
+            topics.add(newTopic);  // Thêm vào danh sách
+            return "redirect:/topic/all";  // Sau khi lưu xong, quay lại trang danh sách topic
         }
 
         @GetMapping("/topic/view/{id}")
@@ -79,4 +89,5 @@ public class HomeController {
             students.removeIf(s -> s.getId() == id);
             return "redirect:/student/all";
         }
+        
 }

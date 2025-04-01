@@ -11,7 +11,8 @@ public class Student {
         this.groupID = groupID;
     }
     
-    public int getId() { return id; }
+
+	public int getId() { return id; }
     public String getName() { return name; }
     public int getGroupID() { return groupID; }
 }

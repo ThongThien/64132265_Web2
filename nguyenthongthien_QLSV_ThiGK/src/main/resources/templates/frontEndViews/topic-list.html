@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Topic List</title>
+</head>
+<body>
+    <div th:replace="fragments/FrontEndModule :: sidebar"></div>
+
+    <div class="col-md-9 d-flex flex-column">
+        <div th:replace="fragments/FrontEndModule :: header"></div>
+
+        <div class="content p-3">
+            <h2>Topic List</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Duyệt qua các topic và hiển thị trong bảng -->
+                    <tr th:each="topic : ${topics}">
+                        <td th:text="${topic.id}"></td>
+                        <td th:text="${topic.name}"></td>
+                        <td th:text="${topic.description}"></td>
+                        <td>
+                            <a th:href="@{/topic/view/{id}(id=${topic.id})}">View</a> |
+                            <a th:href="@{/topic/edit/{id}(id=${topic.id})}">Edit</a> |
+                            <a th:href="@{/topic/delete/{id}(id=${topic.id})}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:replace="fragments/FrontEndModule :: footer"></div>
+    </div>
+</body>
+</html>
