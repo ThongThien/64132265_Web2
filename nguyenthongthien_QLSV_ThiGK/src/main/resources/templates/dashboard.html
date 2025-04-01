@@ -5,33 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
     <link rel="stylesheet" th:href="@{/static/css/style.css}">
-
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
 </head>
 <body>
-    <!-- Include Sidebar -->
-    <div th:replace="FrontEndModule :: sidebar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar (3 phần) -->
+            <div class="col-md-3 bg-light vh-100 d-flex flex-column">
+                <div th:replace="FrontEndModule :: sidebar"></div>
+            </div>
 
-
-    <div class="col-md-9 d-flex flex-column">
-        <!-- Include Header -->
-        <div th:replace="FrontEndModule :: header"></div>
-        
-        <!-- Content Section -->
-        <div class="content p-3">
-            <div class="student-profile mt-4 text-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCOyzBPeMJa_5RMFkybUksPh9XA_5UBu98gV64Agv9jClFrcHsV2XGWTvdqFEUjN0AtY&usqp=CAU" alt="Student Photo" class="img-fluid rounded-circle mb-3">
-				    <div>
-				    	<h2>Thẻ sinh viên</h2>
-				        <p><strong>Tên sinh viên:</strong> Nguyễn Thông Thiên</p>
-				        <p><strong>Mã sinh viên:</strong> 64132265</p>
-				        <p><strong>Ngành học:</strong> Công nghệ thông tin</p>
-				        <p><strong>Email:</strong> thien.nt.64cntt@ntu.edu.vn</p>
-				    </div>
+            <!-- Nội dung chính (7 phần) -->
+            <div class="col-md-9 d-flex flex-column">
+                <!-- Header -->
+                <div th:replace="FrontEndModule :: header" class="bg-dark text-white p-3"></div>
+                
+                <!-- Content Section -->
+                <div class="content p-4">
+                    <h2 class="text-center">Thẻ sinh viên</h2>
+                    <div class="student-profile text-center">
+                        <p><strong>Tên sinh viên:</strong> Nguyễn Thông Thiên</p>
+                        <p><strong>Mã sinh viên:</strong> 64132265</p>
+                        <p><strong>Ngành học:</strong> Công nghệ thông tin</p>
+                        <p><strong>Email:</strong> thien.nt.64cntt@ntu.edu.vn</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Include Footer -->
-        <div th:replace="FrontEndModule :: footer"></div>
     </div>
+	<div class="mt-auto" th:replace="FrontEndModule :: footer"></div>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

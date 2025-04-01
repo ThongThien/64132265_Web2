@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import thiGK.ntu64132265.models.Student;
 import thiGK.ntu64132265.models.Topic;
+
 @Controller
 public class HomeController {	
 	
@@ -24,11 +25,12 @@ public class HomeController {
             new Topic(3, "Blockchain Tech", "Decentralized finance systems", 103, "Finance")
         );
 
-        private List<Student> students = new ArrayList<>(Arrays.asList(
-                new Student(1, "Nguyễn Thông Thiên", 1),
-                new Student(2, "Lê Thanh Sơn", 2),
-                new Student(3, "Trần Minh Tâm", 3)
-            ));
+    	private List<Student> students = new ArrayList<>(Arrays.asList(
+    		    new Student(1, "Nguyễn Thông Thiên", 1),
+    		    new Student(2, "Lê Thanh Sơn", 2),
+    		    new Student(3, "Trần Minh Tâm", 3)
+    		));
+;
         
         @GetMapping("/")
         public String dashboard() {

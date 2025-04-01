@@ -17,8 +17,8 @@ public class Student {
     public int getGroupID() { return groupID; }
 
 
-	public void setId(int i) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

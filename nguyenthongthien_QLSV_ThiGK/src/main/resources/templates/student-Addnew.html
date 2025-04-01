@@ -4,29 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add New Student</title>
-   	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
 </head>
 <body>
-    <div th:replace="frontEndViews/FrontEndModule :: sidebar"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar (3 phần) -->
+            <div class="col-md-3 bg-light vh-100 d-flex flex-column">
+                <div th:replace="FrontEndModule :: sidebar"></div>
+            </div>
 
-    <div class="col-md-9 d-flex flex-column">
-        <div th:replace="frontEndViews/FrontEndModule:: header"></div>
+            <!-- Nội dung chính (7 phần) -->
+            <div class="col-md-9 d-flex flex-column">
+                <!-- Header -->
+                <div th:replace="FrontEndModule :: header" class="bg-dark text-white p-3"></div>
 
-        <div class="content p-3">
-            <h2>Add New Student</h2>
-            <form th:action="@{/student/add}" method="post" th:object="${student}">
-                <label for="name">Name:</label>
-                <input type="text" id="name" th:field="*{name}" required><br><br>
+                <!-- Content Section -->
+                <div class="content p-4">
+                    <h2 class="text-center">Add New Student</h2>
+                    <div class="card shadow p-4">
+                        <form th:action="@{/student/add}" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Student Name:</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
 
-                <label for="groupId">Group ID:</label>
-                <input type="text" id="groupId" th:field="*{groupId}" required><br><br>
+                            <div class="mb-3">
+                                <label for="groupId" class="form-label">Group ID:</label>
+                                <input type="number" id="groupId" name="groupID" class="form-control" required>
+                            </div>
 
-                <button type="submit">Add Student</button>
-                <a th:href="@{/student/all}">Cancel</a>
-            </form>
+                            <button type="submit" class="btn btn-primary">Add Student</button>
+                            <a th:href="@{/student/all}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                
+            </div>
         </div>
-
-        <div th:replace="frontEndViews/FrontEndModule :: footer"></div>
     </div>
+	<div class="mt-auto" th:replace="FrontEndModule :: footer"></div>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
