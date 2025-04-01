@@ -1,0 +1,35 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <!-- Include Sidebar -->
+    <div th:replace="frontEndViews/FrontEndModule::sidebar"></div>
+
+    <div class="col-md-9 d-flex flex-column">
+        <!-- Include Header -->
+        <div th:replace="frontEndViews/FrontEndModule::header"></div>
+
+        <div class="content p-3">
+            <div class="student-profile mt-4 text-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLCOyzBPeMJa_5RMFkybUksPh9XA_5UBu98gV64Agv9jClFrcHsV2XGWTvdqFEUjN0AtY&usqp=CAU" alt="Student Photo" class="img-fluid rounded-circle mb-3">
+                <div class="student-info">
+                    <h2>Thẻ sinh viên</h2>
+                    <p><strong>Tên sinh viên:</strong> <span th:text="${student.name}">Nguyễn Thông Thiên</span></p>
+                    <p><strong>Mã sinh viên:</strong> <span th:text="${student.id}">12345678</span></p>
+                    <p><strong>Ngành học:</strong> Công nghệ thông tin</p>
+                    <p><strong>Email:</strong> <span th:text="${student.email}">thiennt68@gmail.com</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Include Footer -->
+        <div th:replace="frontEndViews/FrontEndModule::footer"></div>
+    </div>
+</body>
+</html>

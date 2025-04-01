@@ -1,35 +1,38 @@
+<!-- frontEndViews.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Electronics Store</title>
+    <title>Frontend Views</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-    <div class="container-fluid">
-        <!-- Header -->
-		<div th:fragment="header" class="d-flex justify-content-between py-4">
-			<div class="header_logo">
-				<img src="https://ntu.edu.vn/Portals/6/ntu.edu.vn.png?ver=ckjn5juE3seliaBQFD_5vA%3d%3d" href="" />
-			</div>
-			<div>[USERNAME]</div>
-		</div>
-				
-	    <div th:fragment="sidebar" class="col-md-4 sidebar">
-		    <ul>
-				<li><a th:href="@{/dashboard}">Dashboard</a></li>
-		        <li><a th:href="@{/}">Topic- List</a></li>
-		        <li><a th:href="@{/add-topic}">Topic- Addnew</a></li>
-		        <li> Khoag trang o giua</li>
-		        <li><a th:href="@{/list}">Students- List</a></li>
-		        <li><a th:href="@{/add-student}">Student- Add</a></li>
-		    </ul>
-	    </div>
-   
-        <!-- Footer -->
-        <div th:fragment="footer" class="footer mt-4">
-            <p>@2025 by Nguyễn Thông Thiên - FIT.NTU</p>
+    <!-- Fragment for Sidebar -->
+    <div th:fragment="sidebar">
+        <div class="sidebar-logo">
+            <img src="https://ntu.edu.vn/Portals/6/ntu.edu.vn.png?ver=ckjn5juE3seliaBQFD_5vA%3d%3d" alt="Logo" class="img-fluid mb-3" />
+        </div>
+        <ul class="nav flex-column w-100">
+            <li class="nav-item"><a class="nav-link" th:href="@{/}">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/topic/all}">Topic-List</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/topic/new}">Topic- New</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/student/all}">Student- List</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/student/new}">Student- AddNew</a></li>
+        </ul>
+    </div>
+
+    <!-- Fragment for Header -->
+    <div th:fragment="header">
+        <div class="header d-flex justify-content-between align-items-center p-3">
+            <h3>Welcome, <span th:text="${username}">[USERNAME]</span></h3>
+        </div>
+    </div>
+
+    <!-- Fragment for Footer -->
+    <div th:fragment="footer">
+        <div class="footer text-center mt-auto py-3">
+            <p>&copy; 2025 by Nguyễn Thông Thiên - FIT.NTU</p>
         </div>
     </div>
 </body>

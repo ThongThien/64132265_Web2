@@ -12,6 +12,7 @@ import thiGK.ntu64132265.models.Student;
 import thiGK.ntu64132265.models.Topic;
 
 public class HomeController {	
+	
     	private List<Topic> topics = Arrays.asList(
             new Topic(1, "AI Development", "Exploring AI and ML", 101, "Research"),
             new Topic(2, "Web Security", "Cybersecurity for web apps", 102, "Security"),
@@ -23,13 +24,12 @@ public class HomeController {
             new Student(2, "Bob", 1),
             new Student(3, "Charlie", 2)
         );
-
+        
         @GetMapping("/")
-        public String home(Model model) {
-            model.addAttribute("topics", topics);
-            model.addAttribute("students", students);
-            return "frontEndViews/home";
+        public String dashboard(Model model) {
+            return "frontEndViews/dashboard";  
         }
+        
 
         @GetMapping("/topic/all")
         public String listTopics(Model model) {
@@ -60,6 +60,11 @@ public class HomeController {
         public String listStudents(Model model) {
             model.addAttribute("students", students);
             return "student-list";
+        }
+        
+        @GetMapping("/student/new")
+        public String newStudent() {
+            return "student-form";
         }
 
         @GetMapping("/student/view/{id}")
