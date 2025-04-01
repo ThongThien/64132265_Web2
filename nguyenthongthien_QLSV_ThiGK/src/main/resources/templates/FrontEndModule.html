@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Frontend Views</title>
-   	<link rel="stylesheet" th:href="@{/css/style.css}">
+   	<link rel="stylesheet" th:href="@{/static/css/style.css}">
+
 </head>
 <body>
     <!-- Fragment for Sidebar -->
@@ -14,7 +15,7 @@
         </div>
         <ul class="nav flex-column w-100">
             <li class="nav-item"><a class="nav-link" th:href="@{/}">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" th:href="@{/topic/all}">Topic-List</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/topic/all}">Topic- List</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/topic/new}">Topic- New</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/student/all}">Student- List</a></li>
             <li class="nav-item"><a class="nav-link" th:href="@{/student/new}">Student- AddNew</a></li>

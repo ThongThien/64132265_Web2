@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+
 </head>
 <body>
     <!-- Include Sidebar -->
-    <div th:replace="frontEndViews/FrontEndModule :: sidebar"></div>
+    <div th:replace="FrontEndModule :: sidebar"></div>
+
 
     <div class="col-md-9 d-flex flex-column">
         <!-- Include Header -->
-        <div th:replace="frontEndViews/FrontEndModule :: header"></div>
+        <div th:replace="FrontEndModule :: header"></div>
         
         <!-- Content Section -->
         <div class="content p-3">
@@ -29,7 +31,7 @@
         </div>
 
         <!-- Include Footer -->
-        <div th:replace="frontEndViews/FrontEndModule :: footer"></div>
+        <div th:replace="FrontEndModule :: footer"></div>
     </div>
 </body>
 </html>

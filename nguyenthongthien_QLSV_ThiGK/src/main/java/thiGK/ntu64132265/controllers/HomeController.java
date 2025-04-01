@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import thiGK.ntu64132265.models.Student;
 import thiGK.ntu64132265.models.Topic;
-
+@Controller
 public class HomeController {	
 	
     	private List<Topic> topics = Arrays.asList(
@@ -31,19 +32,19 @@ public class HomeController {
         
         @GetMapping("/")
         public String dashboard() {
-            return "frontEndViews/dashboard";  
+            return "dashboard";  
         }
 
         @GetMapping("/topic/all")
         public String listTopics(Model model) {
             model.addAttribute("topics", topics);
-            return "frontEndViews/topic-list";
+            return "topic-list";
         }
 
         @GetMapping("/topic/new")
         public String newTopic(Model model) {
             model.addAttribute("topic", new Topic());
-            return "frontEndViews/topic-Addnew";
+            return "topic-Addnew";
         }
 
         @PostMapping("/topic/save")
@@ -62,7 +63,7 @@ public class HomeController {
         public String viewTopic(@PathVariable int id, Model model) {
             Optional<Topic> topic = topics.stream().filter(t -> t.getId() == id).findFirst();
             topic.ifPresent(value -> model.addAttribute("topic", value));
-            return "frontEndViews/topic-View";
+            return "topic-View";
         }
 
         @GetMapping("/topic/delete/{id}")
@@ -74,12 +75,12 @@ public class HomeController {
         @GetMapping("/student/all")
         public String listStudents(Model model) {
             model.addAttribute("students", students);
-            return "frontEndViews/student-List";
+            return "student-List";
         }
         
         @GetMapping("/student/new")
         public String newStudent() {
-            return "frontEndViews/student-Addnew";
+            return "student-Addnew";
         }
         
         @PostMapping("/student/add")
@@ -93,7 +94,7 @@ public class HomeController {
         public String viewStudent(@PathVariable int id, Model model) {
             Optional<Student> student = students.stream().filter(s -> s.getId() == id).findFirst();
             student.ifPresent(value -> model.addAttribute("student", value));
-            return "frontEndViews/student-View";
+            return "student-View";
         }
 
         @GetMapping("/student/delete/{id}")
