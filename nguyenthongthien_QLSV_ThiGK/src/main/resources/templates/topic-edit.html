@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Topic List</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar (3 phần) -->
+            <div class="col-md-3 bg-light vh-100 d-flex flex-column">
+                <div th:replace="FrontEndModule :: sidebar"></div>
+            </div>
+
+            <!-- Nội dung chính (7 phần) -->
+            <div class="col-md-9 d-flex flex-column">
+                <!-- Header -->
+                <div th:replace="FrontEndModule :: header" class="bg-dark text-white p-3"></div>
+
+                <!-- Content Section -->
+                <div class="content p-4">
+                    <h2 class="text-center mt-4">Edit Topic</h2>
+			        <form th:action="@{/topic/update/{id}(id=${topic.id})}" method="post">
+			            <div class="mb-3">
+			                <label for="topicName" class="form-label">Topic Name</label>
+			                <input type="text" class="form-control" id="topicName" name="topicName" th:value="${topic.topicName}">
+			            </div>
+			            <div class="mb-3">
+			                <label for="topicDescription" class="form-label">Description</label>
+			                <textarea class="form-control" id="topicDescription" name="topicDescription" rows="4" th:value="${topic.topicDescription}"></textarea>
+			            </div>
+			            <div class="mb-3">
+			                <label for="supervisorID" class="form-label">Supervisor ID</label>
+			                <input type="number" class="form-control" id="supervisorID" name="supervisorID" th:value="${topic.supervisorID}">
+			            </div>
+			            <div class="mb-3">
+			                <label for="topicType" class="form-label">Topic Type</label>
+			                <input type="text" class="form-control" id="topicType" name="topicType" th:value="${topic.topicType}">
+			            </div>
+			            <button type="submit" class="btn btn-primary">Save Changes</button>
+			            <a href="/topic/all" class="btn btn-secondary">Cancel</a>
+			        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-auto" th:replace="FrontEndModule :: footer"></div>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

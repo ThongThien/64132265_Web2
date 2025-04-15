@@ -1,6 +1,7 @@
 package thiGK.ntu64132265.models;
 
-public class Student {
+
+public class Student implements Identifiable{
     private int id;
     private String name;
     private int groupID;
@@ -10,15 +11,32 @@ public class Student {
         this.name = name;
         this.groupID = groupID;
     }
-    
 
-	public int getId() { return id; }
-    public String getName() { return name; }
-    public int getGroupID() { return groupID; }
-
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public int getId() {
+        return this.id;
     }
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getGroupID() {
+		return groupID;
+	}
+
+	public void setGroupID(int groupID) {
+		this.groupID = groupID;
+	}
+    
+    
 
 }
