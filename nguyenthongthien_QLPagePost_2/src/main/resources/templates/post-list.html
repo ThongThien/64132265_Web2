@@ -39,9 +39,9 @@
 									<td th:text ="${post.content}"></td>
 									<td th:text ="${post.categoryId}"></td>								
 									<td>
-										<a th:href ="@{post/view/{id}(id =${post.id})}">View</a>
-										<a th:href ="@{post/edit/{id}(id =${post.id})}">Edit</a>
-										<a th:href ="@{post/delete/{id} (id=${post.id})}">Delete</a>
+										<a th:href ="@{view/{id}(id =${post.id})}">View</a>
+										<a th:href ="@{edit/{id}(id =${post.id})}">Edit</a>
+										<a th:href ="@{delete/{id} (id=${post.id})}">Delete</a>
 									</td>								
 								</tr>
 							</tbody>

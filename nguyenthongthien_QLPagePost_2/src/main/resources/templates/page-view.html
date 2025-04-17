@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page-view</title>
+
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class = "row">
+			<div class="col-md-3 bg-light vh-100 d-flex flex-column">
+				<div th:replace="layout :: sidebar"></div>
+			</div>		
+			<div class="col-md-9 d-flex flex-column">
+				<div th:replace="layout :: header" class="bg-dark text-white p-3"></div>
+				
+				<div class="content p-4">
+					<h2>Page Details</h2>
+			        <div class="mb-3">
+			            <label for="pageId" class="form-label">ID</label>
+			            <input type="text" class="form-control" id="pageId" th:value="${page.id}" disabled>
+			        </div>
+			        <div class="mb-3">
+			            <label for="pageName" class="form-label">Page Name</label>
+			            <input type="text" class="form-control" id="pageName" th:value="${page.pageName}" disabled>
+			        </div>
+			        <div class="mb-3">
+			            <label for="pageKeyword" class="form-label">Keyword</label>		           
+			        	<input type="text" class="form-control" id="pageKeyword" th:value="${page.keyword}" disabled>
+			        </div>
+			        <div class="mb-3">
+			            <label for="pageContent" class="form-label">Content</label>
+			            <input type="text" class="form-control" id="pageContent" th:value="${page.content}" disabled>
+			        </div>
+			        <div class="mb-3">
+			            <label for="pageParentPageId" class="form-label">Parent Page ID</label>
+			            <input type="text" class="form-control" id="pageParentPageId" th:value="${page.parentPageId}" disabled>
+			        </div>
+			        <a href="/page/all" class="btn btn-secondary">Back to List</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="mt-auto" th:replace="layout :: footer"></div>
+	<script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

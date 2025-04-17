@@ -42,9 +42,9 @@
 									<td th:text ="${page.content}"></td>
 									<td th:text ="${page.parentPageId}"></td>
 									<td>
-										<a th:href="@{page/view/{id}(id=${page.id})}">View</a>
-										<a th:href="@{page/edit/{id}(id=${page.id})}">Edit</a>
-										<a th:href="@{page/delete/{id}(id=${page.id})}">Delete</a>
+										<a th:href="@{view/{id}(id=${page.id})}">View</a>
+										<a th:href="@{edit/{id}(id=${page.id})}">Edit</a>
+										<a th:href="@{delete/{id}(id=${page.id})}">Delete</a>
 									</td>
 								</tr>
 							</tbody>
