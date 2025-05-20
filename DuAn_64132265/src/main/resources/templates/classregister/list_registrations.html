@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Class Registrations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+	    <header class="d-flex justify-content-between align-items-center py-3">
+	        <div class="header_logo">
+	            <img src="https://ntu.edu.vn/Portals/6/ntu.edu.vn.png?ver=ckjn5juE3seliaBQFD_5vA%3d%3d" class="img-fluid" alt="Logo" />
+	        </div>
+	    </header>
+	</div>
+	
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	    <a class="nav-link" href="/">Home</a>
+	    <a class="nav-link" href="/students">List Student</a>
+	    <a class="nav-link" href="/classes">List Class</a>
+	    <a class="nav-link" href="/trainers">List Trainer</a>
+	    <a class="navbar-brand" href="/classregister">Class Registration</a>
+	    <a class="nav-link" href="/statistics">Statistics</a>
+	</nav>
+	<div class="container-fluid">
+	    <h2 class="text-center mb-4" style="font-weight: 700; font-size: 2rem; border-bottom: 4px solid #28a745; display: inline-block; padding-bottom: 5px;">List of Class Registrations</h2>
+	    <br>
+	    <a href="/classregister/add" class="btn btn-primary mb-3">Add Registration</a>
+	    <table class="table table-bordered table-striped">
+		    <thead class="thead-dark">
+		    <tr>
+		        <th>ID</th>
+		        <th>Student Name</th>
+		        <th>Class Name</th>
+		        <th>Registration Date</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    <tr th:each="reg : ${registrations}">
+		        <td th:text="${reg.id}"></td>
+		        <td th:text="${reg.student.name}"></td>
+		        <td th:text="${reg.aClass.className}"></td>
+		        <td th:text="${#dates.format(reg.registrationDate, 'dd/MM/yyyy HH:mm')}"></td>	        
+		    </tr>
+		    </tbody>
+		</table>
+
+	</div>
+	<footer class="footer mt-4 bg-light py-3">
+	   <div class="container text-center">
+	       <p>&copy; NGUYENTHONGTHIEN-K64</p>
+	   </div>
+	</footer>
+	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
