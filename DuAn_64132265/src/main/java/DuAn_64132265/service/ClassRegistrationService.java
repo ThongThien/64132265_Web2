@@ -3,6 +3,8 @@ package DuAn_64132265.service;
 import DuAn_64132265.entity.ClassRegistration;
 import DuAn_64132265.entity.Student;
 import DuAn_64132265.repo.ClassRegistrationRepository;
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +47,11 @@ public class ClassRegistrationService {
     public int countByClass(Class cls) {
         return classRegistrationRepository.countByAClass(cls);
     }
+
+    @Transactional
+    public void deleteByStudentAndClass(Integer studentId, Integer classId) {
+        classRegistrationRepository.deleteByStudent_IdAndAClass_Id(studentId, classId);
+    }
+    
    
 }

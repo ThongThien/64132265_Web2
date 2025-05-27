@@ -15,4 +15,7 @@ public interface ClassRegistrationRepository extends JpaRepository<ClassRegistra
     int countByAClass(Class aClass);
     Optional<ClassRegistration> findByStudentAndAClass(Student student, Class class1);
     List<ClassRegistration> findByStudentId(Integer studentId);
+    void deleteByStudent_IdAndAClass_Id(Integer studentId, Integer classId);
+
+
 }

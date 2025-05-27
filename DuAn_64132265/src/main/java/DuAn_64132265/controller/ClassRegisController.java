@@ -88,4 +88,11 @@ public class ClassRegisController {
         classRegistrationService.saveRegistration(registration);
         return "redirect:/classregister";
     }
+    @GetMapping("/delete/{studentId}/{classId}")
+    public String deleteRegistration(@PathVariable("studentId") Integer studentId,
+                                     @PathVariable("classId") Integer classId) {
+        classRegistrationService.deleteByStudentAndClass(studentId, classId);
+        return "redirect:/classregister";
+    }
+
 }
