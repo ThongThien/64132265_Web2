@@ -52,6 +52,8 @@ public class ClassRegistrationService {
     public void deleteByStudentAndClass(Integer studentId, Integer classId) {
         classRegistrationRepository.deleteByStudent_IdAndAClass_Id(studentId, classId);
     }
-    
-   
+    public List<ClassRegistration> searchRegistrationsByStudentName(String keyword) {
+        return classRegistrationRepository.findByStudentNameContainingIgnoreCase(keyword);
+    }
+
 }

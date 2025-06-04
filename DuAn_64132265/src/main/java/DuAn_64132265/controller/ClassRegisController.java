@@ -29,9 +29,15 @@ public class ClassRegisController {
     private ClassService classService;
 
     @GetMapping
-    public String listRegistrations(Model model) {
-        List<ClassRegistration> registrations = classRegistrationService.getAllRegistrations();
+    public String listRegistrations(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        List<ClassRegistration> registrations;
+        if (keyword == null || keyword.isEmpty()) {
+            registrations = classRegistrationService.getAllRegistrations();
+        } else {
+            registrations = classRegistrationService.searchRegistrationsByStudentName(keyword);
+        }
         model.addAttribute("registrations", registrations);
+        model.addAttribute("keyword", keyword);
         return "classregister/list_registrations";
     }
 

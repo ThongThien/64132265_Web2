@@ -26,11 +26,15 @@ public class TrainerController {
     ClassService classService;
     
     @GetMapping
-    public String listTrainers(Model model) {
-        List<Trainer> trainers = trainerService.getAllTrainers();
+    public String listTrainers(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        List<Trainer> trainers = (keyword == null || keyword.isEmpty())
+            ? trainerService.getAllTrainers()
+            : trainerService.searchTrainersByName(keyword);
         model.addAttribute("trainers", trainers);
+        model.addAttribute("keyword", keyword);
         return "trainer/list_trainer";
     }
+
 
     @GetMapping("/new")
     public String showAddForm(Model model) {

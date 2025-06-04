@@ -18,6 +18,14 @@ public class StudentService {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+    
+    public List<Student> searchStudentsByName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            return getAllStudents();
+        }
+        return studentRepository.findByNameContainingIgnoreCase(name);
+    }
+
 
     public Optional<Student> getStudentById(Integer id) {
         return studentRepository.findById(id);

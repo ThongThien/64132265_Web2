@@ -30,10 +30,13 @@ public class ClassController {
     ClassRegistrationService classRegistrationService;
     
     @GetMapping
-    public String getAllClasses(Model model) {
-        List<Class> classes = classService.getAllClasses();  
-        model.addAttribute("classes", classes);  
-        return "class/list_class"; 
+    public String getAllClasses(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        List<Class> classes = (keyword == null || keyword.isEmpty())
+            ? classService.getAllClasses()
+            : classService.searchClassesByName(keyword);
+        model.addAttribute("classes", classes);
+        model.addAttribute("keyword", keyword);
+        return "class/list_class";
     }
 
     @GetMapping("/edit/{id}")

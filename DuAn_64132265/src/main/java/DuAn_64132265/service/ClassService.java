@@ -15,7 +15,12 @@ public class ClassService {
     public List<Class> getAllClasses() {
         return classRepository.findAll();  
     }
-
+    public List<Class> searchClassesByName(String className) {
+        if (className == null || className.trim().isEmpty()) {
+            return getAllClasses();
+        }
+        return classRepository.findByClassNameContainingIgnoreCase(className);
+    }
     public Class getClassById(Integer id) {
         return classRepository.findById(id).orElse(null);
     }

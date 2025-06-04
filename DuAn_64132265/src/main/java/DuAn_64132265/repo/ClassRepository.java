@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface ClassRepository extends JpaRepository<Class, Integer> {
     Class findByClassName(String className);
     List<Class> findByTrainerId(Integer trainerId);
+    List<Class> findByClassNameContainingIgnoreCase(String className);
 }

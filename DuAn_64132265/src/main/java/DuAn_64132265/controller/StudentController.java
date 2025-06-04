@@ -31,6 +31,14 @@ public class StudentController {
         model.addAttribute("students", students);
         return "students/list_students"; 
     }
+    
+    @GetMapping("/search")
+    public String searchStudents(@RequestParam("keyword") String keyword, Model model) {
+        List<Student> students = studentService.searchStudentsByName(keyword);
+        model.addAttribute("students", students);
+        model.addAttribute("keyword", keyword);  
+        return "students/list_students";
+    }
 
     @GetMapping("/new")
     public String showCreateForm(Model model) {
