@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,7 +57,7 @@ public class ClassRegisController {
 
         model.addAttribute("students", studentService.getAllStudents());
         model.addAttribute("classes", classService.getAllClasses());
-
+        
         if (result.hasErrors()) {
             return "classregister/add_registration";
         }
@@ -68,7 +70,7 @@ public class ClassRegisController {
             return "classregister/add_registration";
         }
 
-        // ✅ Lấy lại class từ DB để đảm bảo không bị thiếu dữ liệu
+        // Lấy lại class từ DB để đảm bảo không bị thiếu dữ liệu
         Integer classId = registration.getaClass().getId();
         Class selectedClass = classService.getClassById(classId);
 
@@ -77,7 +79,7 @@ public class ClassRegisController {
             return "classregister/add_registration";
         }
 
-        // ✅ Kiểm tra maxStudents
+        // Kiểm tra maxStudents
         if (selectedClass.getMaxStudents() == null) {
             result.rejectValue("aClass", "error.registration", "Lớp chưa cấu hình số lượng tối đa.");
             return "classregister/add_registration";
@@ -89,11 +91,44 @@ public class ClassRegisController {
             return "classregister/add_registration";
         }
 
-        // ✅ Tất cả đều hợp lệ → lưu
-        registration.setaClass(selectedClass); // set lại class đã load đầy đủ
+        // Tất cả đều hợp lệ → lưu
+        registration.setaClass(selectedClass);
         classRegistrationService.saveRegistration(registration);
         return "redirect:/classregister";
     }
+    
+    @PostMapping("/extend/{regId}")
+    public String extendRegistration(@PathVariable("regId") Integer regId,
+                                     @RequestParam("extend_type") String extendType) {
+        ClassRegistration reg = classRegistrationService.getClassRegistrationById(regId);
+        if (reg == null) {
+            return "redirect:/classregister";
+        }
+
+        int days = 0;
+        switch (extendType) {
+            case "15d": days = 15; break;
+            case "1m": days = 30; break;
+            case "2m": days = 60; break;
+            default: days = 0;
+        }
+
+        Date now = new Date();
+        Calendar cal = Calendar.getInstance();
+
+        if (reg.getExpiredDate() == null) {
+            cal.setTime(now);
+        } else {
+            cal.setTime(reg.getExpiredDate());
+        }
+
+        cal.add(Calendar.DAY_OF_MONTH, days);
+        reg.setExpiredDate(cal.getTime());
+
+        classRegistrationService.saveRegistration(reg);
+        return "redirect:/classregister";
+    }
+
     @GetMapping("/delete/{studentId}/{classId}")
     public String deleteRegistration(@PathVariable("studentId") Integer studentId,
                                      @PathVariable("classId") Integer classId) {

@@ -43,5 +43,4 @@ public class ClassService {
     public List<Class> getClassesByTrainerId(Integer trainerId) {
         return classRepository.findByTrainerId(trainerId);
     }
-
 }

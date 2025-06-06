@@ -16,12 +16,14 @@ public class TrainerService {
     public List<Trainer> getAllTrainers() {
         return trainerRepository.findAll();
     }
+    
     public List<Trainer> searchTrainersByName(String name) {
         if (name == null || name.trim().isEmpty()) {
             return getAllTrainers();
         }
         return trainerRepository.findByNameContainingIgnoreCase(name);
     }
+    
     public Trainer getTrainerById(Integer id) {
         return trainerRepository.findById(id).orElse(null);
     }
@@ -37,5 +39,4 @@ public class TrainerService {
     public Trainer getTrainerByEmail(String email) {
         return trainerRepository.findByEmail(email);
     }
-    
 }

@@ -105,8 +105,7 @@ public class ClassController {
         }
 
         Class cls = classOpt.get();
-        int registeredCount = classRegistrationService.countByClassId(id); // Đếm số học viên đăng ký lớp
-
+        int registeredCount = classRegistrationService.countByClassId(id); 
         model.addAttribute("class", cls);
         model.addAttribute("registeredCount", registeredCount);
 

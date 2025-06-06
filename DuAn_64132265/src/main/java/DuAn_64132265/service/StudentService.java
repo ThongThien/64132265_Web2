@@ -13,7 +13,6 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
-
     
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
@@ -25,7 +24,6 @@ public class StudentService {
         }
         return studentRepository.findByNameContainingIgnoreCase(name);
     }
-
 
     public Optional<Student> getStudentById(Integer id) {
         return studentRepository.findById(id);
@@ -45,6 +43,4 @@ public class StudentService {
     public List<Student> searchByName(String name) {
         return studentRepository.findByNameContainingIgnoreCase(name);
     }
-
-
 }

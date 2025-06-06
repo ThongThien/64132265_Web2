@@ -25,6 +25,4 @@ public interface ClassRegistrationRepository extends JpaRepository<ClassRegistra
     
     @Query("SELECT cr FROM ClassRegistration cr WHERE LOWER(cr.student.name) LIKE LOWER(CONCAT('%', :studentName, '%'))")
     List<ClassRegistration> findByStudentNameContainingIgnoreCase(@Param("studentName") String studentName);
-
-
 }

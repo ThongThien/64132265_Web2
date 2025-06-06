@@ -59,7 +59,7 @@
 		    class="form-control me-2" 
 		    type="search" 
 		    name="keyword" 
-		    placeholder="Tìm theo tên lớp" 
+		    placeholder="search by name" 
 		    aria-label="Search"
 		    th:value="${keyword}"
 		  />
@@ -72,21 +72,21 @@
 	            <tr>
 	                <th>ID</th>
 	                <th>Class Name</th>
-	                <th>Description</th> <!-- Thêm cột Mô tả -->
-	                <th>Schedule</th> <!-- Thêm cột Lịch học -->
-	                <th>Max Students</th> <!-- Thêm cột Số lượng tối đa -->
-	                <th>Trainer</th> <!-- Thêm cột Trainer -->
-	                <th>Actions</th> <!-- Thêm cột Hành động -->
+	                <th>Description</th> 
+	                <th>Schedule</th>
+	                <th>Max Students</th> 
+	                <th>Trainer</th> 
+	                <th>Actions</th>
 	            </tr>
 	        </thead>
 	        <tbody>
 	            <tr th:each="class : ${classes}">
 	                <td th:text="${class.id}"></td>
 	                <td th:text="${class.className}"></td>
-	                <td th:text="${class.description}"></td> <!-- Hiển thị mô tả lớp -->
-	                <td th:text="${class.schedule}"></td> <!-- Hiển thị lịch học -->
-	                <td th:text="${class.maxStudents}"></td> <!-- Hiển thị số lượng tối đa -->
-	                <td th:text="${class.trainer.name}"></td> <!-- Hiển thị tên giảng viên -->
+	                <td th:text="${class.description}"></td>
+	                <td th:text="${class.schedule}"></td>
+	                <td th:text="${class.maxStudents}"></td> 
+	                <td th:text="${class.trainer.name}"></td> 
 	                <td>
 	                    <a th:href="@{/classes/edit/{id}(id=${class.id})}" class="btn btn-info btn-sm">Edit</a>
 	                    <a th:href="@{/classes/delete/{id}(id=${class.id})}" 

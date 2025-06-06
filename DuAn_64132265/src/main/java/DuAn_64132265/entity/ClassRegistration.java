@@ -1,6 +1,8 @@
 package DuAn_64132265.entity;
 
 import jakarta.persistence.*;
+
+import java.util.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -22,74 +24,60 @@ public class ClassRegistration {
 
     @Column(name = "registration_date", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp registrationDate;
-    @PrePersist
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "expired_date")
+    private Date expiredDate;
+
+	public Date getExpiredDate() {
+		return expiredDate;
+	}
+
+	public void setExpiredDate(Date expiredDate) {
+		this.expiredDate = expiredDate;
+	}
+	
+	@PrePersist
     public void prePersist() {
         if (registrationDate == null) {
             registrationDate = new Timestamp(System.currentTimeMillis());
         }
     }
-	/**
-	 * @return the id
-	 */
+
 	public Integer getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the student
-	 */
 	public Student getStudent() {
 		return student;
 	}
 
-	/**
-	 * @param student the student to set
-	 */
 	public void setStudent(Student student) {
 		this.student = student;
 	}
 
-	/**
-	 * @return the aClass
-	 */
 	public Class getaClass() {
 		return aClass;
 	}
 
-	/**
-	 * @param aClass the aClass to set
-	 */
 	public void setaClass(Class aClass) {
 		this.aClass = aClass;
 	}
 
-	/**
-	 * @return the registrationDate
-	 */
 	public Timestamp getRegistrationDate() {
 		return registrationDate;
 	}
 
-	/**
-	 * @param registrationDate the registrationDate to set
-	 */
 	public void setRegistrationDate(Timestamp registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return super.toString();
-	}
-
-    // Getter và Setter
-    
+	}  
 }

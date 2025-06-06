@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TrainerRepository extends JpaRepository<Trainer, Integer> {
     Trainer findByEmail(String email);
+    
     List<Trainer> findByNameContainingIgnoreCase(String name);
 }
